@@ -12,6 +12,8 @@ function App() {
     const [userName, setUserName] = useState("");
     const [token, setToken] = useState("");
     const [deviceId, setDeviceId] = useState("");
+    const [isCustomQuizPageEnabled, setIsCustomQuizPageEnabled] = useState("YES")
+    const [isCustomLogoEnabled, setIsCustomLogoEnabled] = useState("YES")
 
     const flyySDK = new FlyySDK();
 
@@ -24,7 +26,9 @@ function App() {
         attachMode: 'popup',
         //attachMode: 'drawer',
         environment: environment,
-        device_id: "flyy-demo-app"
+        device_id: "flyy-demo-app",
+        isCustomQuizPageEnabled: isCustomQuizPageEnabled,
+        isCustomQuizLogoEnabled: isCustomLogoEnabled
     };
     
 
@@ -54,6 +58,14 @@ function App() {
     const language = "js";
 
     const startFlyy = async () => {
+
+        console.log("Clicked Init BUtton")
+        console.log({partnerId})
+        console.log({packageName})
+        console.log({environment})
+        console.log({partnerKey})
+        console.log({isCustomQuizPageEnabled})
+        console.log({isCustomLogoEnabled})
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -153,6 +165,29 @@ function App() {
                             >
                                 <option value="STAGING">STAGING</option>
                                 <option value="PRODUCTION">PRODUCTION</option>
+                            </select>
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Show Custom Quiz Page :</label>
+                            <select 
+                                value={isCustomQuizPageEnabled} 
+                                onChange={(e) => setIsCustomQuizPageEnabled(e.target.value)}
+                                style={{margin: '5px'}}
+                            >
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Show Custom Logo :</label>
+                            <select 
+                                value={isCustomLogoEnabled} 
+                                onChange={(e) => setIsCustomLogoEnabled(e.target.value)}
+                                style={{margin: '5px'}}
+                            >
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
                             </select>
                         </div>
                         {environment === "STAGING" && (
