@@ -12,8 +12,12 @@ function App() {
     const [userName, setUserName] = useState("");
     const [token, setToken] = useState("");
     const [deviceId, setDeviceId] = useState("");
+    const [isCustomQuizPageEnabled, setIsCustomQuizPageEnabled] = useState("YES")
+    const [isCustomLogoEnabled, setIsCustomLogoEnabled] = useState("YES")
 
     const flyySDK = new FlyySDK();
+
+    console.log("FLY SDK - ", flyySDK)
 
     flyySDK.startReferralTracking();
 
@@ -24,7 +28,9 @@ function App() {
         attachMode: 'popup',
         //attachMode: 'drawer',
         environment: environment,
-        device_id: "flyy-demo-app"
+        device_id: "flyy-demo-app",
+        isCustomQuizPageEnabled: isCustomQuizPageEnabled,
+        isCustomQuizLogoEnabled: isCustomLogoEnabled
     };
     
 
@@ -54,6 +60,14 @@ function App() {
     const language = "js";
 
     const startFlyy = async () => {
+
+        console.log("Clicked Init BUtton")
+        console.log({partnerId})
+        console.log({packageName})
+        console.log({environment})
+        console.log({partnerKey})
+        console.log({isCustomQuizPageEnabled})
+        console.log({isCustomLogoEnabled})
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -155,6 +169,109 @@ function App() {
                                 <option value="PRODUCTION">PRODUCTION</option>
                             </select>
                         </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Show Custom Quiz Page :</label>
+                            <select 
+                                value={isCustomQuizPageEnabled} 
+                                onChange={(e) => setIsCustomQuizPageEnabled(e.target.value)}
+                                style={{margin: '5px'}}
+                            >
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Show Custom Logo :</label>
+                            <select 
+                                value={isCustomLogoEnabled} 
+                                onChange={(e) => setIsCustomLogoEnabled(e.target.value)}
+                                style={{margin: '5px'}}
+                            >
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Thank You Title:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Thank You Description:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Text Colour Primary:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Text Colour Secondary:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Text Colour:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Unselected Colour:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Description Colour:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Title:</label>
+                            <input 
+                                // value={partnerId} 
+                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+
+
+
+
+
+
                         {environment === "STAGING" && (
                             <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                                 <label>Partner Key:</label>
@@ -196,6 +313,45 @@ function App() {
 
                 <h4>Following Methods are availabe for various screens to call.</h4>
                 <div className="app d-flex flex-wrap mb-3">
+
+                <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
+                        <h5 className={"card-header"}>Poll List Method</h5>
+                        <div className={"card-body"}>
+                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Poll List Screen</h6>
+                            <CodeBlock
+                                text={"flyySDK.openPollList(data)"}
+                                language={language}
+                                theme={dracula} />
+                                <p className={"card-text"}>This Method is to Open Poll List Screen.</p>
+                            <button onClick={() => flyySDK.openPollListScreen(data)} className={"form-control btn-primary mt-2  submit-button"} >Poll List</button>
+                        </div>
+                    </div>
+                    <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
+                        <h5 className={"card-header"}>Survey List Method</h5>
+                        <div className={"card-body"}>
+                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Survey List Screen</h6>
+                            <CodeBlock
+                                text={"flyySDK.openSurveyList(data)"}
+                                language={language}
+                                theme={dracula} />
+                                <p className={"card-text"}>This Method is to Open Survey List Screen.</p>
+                            <button onClick={() => flyySDK.openSurveyListScreen(data)} className={"form-control btn-primary mt-2  submit-button"} >Survey List</button>
+                        </div>
+                    </div>
+
+                    <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
+                        <h5 className={"card-header"}>Trivia List Method</h5>
+                        <div className={"card-body"}>
+                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Trivia List Screen</h6>
+                            <CodeBlock
+                                text={"flyySDK.openTriviaList(data)"}
+                                language={language}
+                                theme={dracula} />
+                                <p className={"card-text"}>This Method is to Open Trivia List Screen.</p>
+                            <button onClick={() => flyySDK.openTriviaListScreen(data)} className={"form-control btn-primary mt-2  submit-button"} >Trivia List</button>
+                        </div>
+                    </div>
+
 
                     <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
                         <h5 className={"card-header"}>Offers Method</h5>
