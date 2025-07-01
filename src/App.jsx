@@ -14,7 +14,14 @@ function App() {
     const [deviceId, setDeviceId] = useState("");
     const [isCustomQuizPageEnabled, setIsCustomQuizPageEnabled] = useState("YES")
     const [isCustomLogoEnabled, setIsCustomLogoEnabled] = useState("YES")
-
+    const [isTitle, setIsTitle] = useState("Thank You")
+    const [isDescription, setIsDescription] = useState("Enter Description")
+    const [isDescriptionColour, setIsDescriptionColour] = useState("#000000")
+    const [isTitleColour, setIsTitleColour] = useState("#000000")
+    const [isButtonTextColour, setIsButtonTextColour] = useState("#C7222A")
+    const [isButtonColour, setIsButtonColour] = useState("#FFFFFF")
+    const [isSeekbarColour, setIsSeekbarColour] = useState("#0A6A34")
+    const [isSelectedColour, setIsSelectedColour] = useState("#C7222A")
     const flyySDK = new FlyySDK();
 
     console.log("FLY SDK - ", flyySDK)
@@ -30,7 +37,15 @@ function App() {
         environment: environment,
         device_id: "flyy-demo-app",
         isCustomQuizPageEnabled: isCustomQuizPageEnabled,
-        isCustomQuizLogoEnabled: isCustomLogoEnabled
+        isCustomQuizLogoEnabled: isCustomLogoEnabled,
+        isTitle: isTitle,
+        isDescription: isDescription,
+        isDescriptionColour: isDescriptionColour,
+        isTitleColour: isTitleColour,
+        isButtonTextColour: isButtonTextColour,
+        isButtonColour: isButtonColour,
+        isSeekbarColour: isSeekbarColour,
+        isSelectedColour: isSelectedColour,
     };
     
 
@@ -68,6 +83,14 @@ function App() {
         console.log({partnerKey})
         console.log({isCustomQuizPageEnabled})
         console.log({isCustomLogoEnabled})
+        console.log({isTitle})
+        console.log({isDescription})
+        console.log({isDescriptionColour})
+        console.log({isTitleColour})
+        console.log({isButtonTextColour})
+        console.log({isButtonColour})
+        console.log({isSeekbarColour})
+        console.log({isSelectedColour})
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -197,8 +220,8 @@ function App() {
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Thank You Title:</label>
                             <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                value={isTitle} 
+                                onChange={(e) => setIsTitle(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
                         </div>
@@ -206,13 +229,48 @@ function App() {
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Thank You Description:</label>
                             <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                value={isDescription} 
+                                onChange={(e) => setIsDescription(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
                         </div>
 
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Text Colour:</label>
+                            <input 
+                                value={isButtonTextColour} 
+                                onChange={(e) => setIsButtonTextColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Background Colour:</label>
+                            <input 
+                                value={isButtonColour} 
+                                onChange={(e) => setIsButtonColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Seekbar Colour:</label>
+                            <input 
+                                value={isSeekbarColour} 
+                                onChange={(e) => setIsSeekbarColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Selected option Border Colour:</label>
+                            <input 
+                                value={isSelectedColour} 
+                                onChange={(e) => setIsSelectedColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        {/* <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Text Colour Primary:</label>
                             <input 
                                 // value={partnerId} 
@@ -228,9 +286,9 @@ function App() {
                                 // onChange={(e) => setPartnerId(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
-                        </div>
+                        </div> */}
 
-                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                        {/* <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Button Text Colour:</label>
                             <input 
                                 // value={partnerId} 
@@ -246,22 +304,22 @@ function App() {
                                 // onChange={(e) => setPartnerId(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
-                        </div>
+                        </div> */}
 
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Description Colour:</label>
                             <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                value={isDescriptionColour} 
+                                onChange={(e) => setIsDescriptionColour(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
                         </div>
 
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Title:</label>
+                            <label>Primary Text Colour:</label>
                             <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
+                                value={isTitleColour} 
+                                onChange={(e) => setIsTitleColour(e.target.value)} 
                                 style={{margin: '5px'}}
                             />
                         </div>
