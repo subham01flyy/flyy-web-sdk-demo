@@ -18,7 +18,10 @@ function App() {
     const [isDescription, setIsDescription] = useState("Enter Description")
     const [isDescriptionColour, setIsDescriptionColour] = useState("#000000")
     const [isTitleColour, setIsTitleColour] = useState("#000000")
-
+    const [isButtonTextColour, setIsButtonTextColour] = useState("#C7222A")
+    const [isButtonColour, setIsButtonColour] = useState("#FFFFFF")
+    const [isSeekbarColour, setIsSeekbarColour] = useState("#0A6A34")
+    const [isSelectedColour, setIsSelectedColour] = useState("#C7222A")
     const flyySDK = new FlyySDK();
 
     console.log("FLY SDK - ", flyySDK)
@@ -38,7 +41,11 @@ function App() {
         isTitle: isTitle,
         isDescription: isDescription,
         isDescriptionColour: isDescriptionColour,
-        isTitleColour: isTitleColour
+        isTitleColour: isTitleColour,
+        isButtonTextColour: isButtonTextColour,
+        isButtonColour: isButtonColour,
+        isSeekbarColour: isSeekbarColour,
+        isSelectedColour: isSelectedColour,
     };
     
 
@@ -80,6 +87,10 @@ function App() {
         console.log({isDescription})
         console.log({isDescriptionColour})
         console.log({isTitleColour})
+        console.log({isButtonTextColour})
+        console.log({isButtonColour})
+        console.log({isSeekbarColour})
+        console.log({isSelectedColour})
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -224,6 +235,41 @@ function App() {
                             />
                         </div>
 
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Text Colour:</label>
+                            <input 
+                                value={isButtonTextColour} 
+                                onChange={(e) => setIsButtonTextColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Button Background Colour:</label>
+                            <input 
+                                value={isButtonColour} 
+                                onChange={(e) => setIsButtonColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Seekbar Colour:</label>
+                            <input 
+                                value={isSeekbarColour} 
+                                onChange={(e) => setIsSeekbarColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Selected option Border Colour:</label>
+                            <input 
+                                value={isSelectedColour} 
+                                onChange={(e) => setIsSelectedColour(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
                         {/* <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Text Colour Primary:</label>
                             <input 
@@ -270,7 +316,7 @@ function App() {
                         </div>
 
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Title Colour:</label>
+                            <label>Primary Text Colour:</label>
                             <input 
                                 value={isTitleColour} 
                                 onChange={(e) => setIsTitleColour(e.target.value)} 
