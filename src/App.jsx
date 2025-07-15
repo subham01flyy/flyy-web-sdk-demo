@@ -22,6 +22,8 @@ function App() {
     const [isButtonColour, setIsButtonColour] = useState("#FFFFFF")
     const [isSeekbarColour, setIsSeekbarColour] = useState("#0A6A34")
     const [isSelectedColour, setIsSelectedColour] = useState("#C7222A")
+    const [referralInfoMsg, setReferralInfoMsg] = useState("")
+    const [referralHistoryMessage, setReferralHistoryMessage] = useState("")
     const flyySDK = new FlyySDK();
 
     console.log("FLY SDK - ", flyySDK)
@@ -46,6 +48,8 @@ function App() {
         isButtonColour: isButtonColour,
         isSeekbarColour: isSeekbarColour,
         isSelectedColour: isSelectedColour,
+        referralInfoMsg: referralInfoMsg,
+        referralHistoryMessage: referralHistoryMessage,
     };
     
 
@@ -91,6 +95,8 @@ function App() {
         console.log({isButtonColour})
         console.log({isSeekbarColour})
         console.log({isSelectedColour})
+        console.log({referralInfoMsg})
+        console.log({referralHistoryMessage})
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -144,7 +150,7 @@ function App() {
             <div className="container top-container">
 
                 <h2>
-                    Flyy Web SDK 
+                    Flyy Web SDK  - 
                 </h2>
 
                 <div className={"mt-2"}>
@@ -324,6 +330,24 @@ function App() {
                             />
                         </div>
 
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Referral History Info Message:</label>
+                            <input 
+                                value={referralInfoMsg} 
+                                onChange={(e) => setReferralInfoMsg(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
+                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                            <label>Referral History Message:</label>
+                            <input 
+                                value={referralHistoryMessage} 
+                                onChange={(e) => setReferralHistoryMessage(e.target.value)} 
+                                style={{margin: '5px'}}
+                            />
+                        </div>
+
 
 
 
@@ -371,6 +395,21 @@ function App() {
 
                 <h4>Following Methods are availabe for various screens to call.</h4>
                 <div className="app d-flex flex-wrap mb-3">
+
+                <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
+                        <h5 className={"card-header"}>New Invite & Earn Method</h5>
+                        <div className={"card-body"}>
+                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Invite & Earn New Screen</h6>
+                            <CodeBlock
+                                text={"flyySDK.openInviteNewScreen(data)"}
+                                language={language}
+                                theme={dracula} />
+                                <p className={"card-text"}>This Method is to Open Invite & Earn New Screen.</p>
+                            <button 
+                            // onClick={() => flyySDK.openPollListScreen(data)} 
+                            className={"form-control btn-primary mt-2  submit-button"} >Invite & Earn New Method</button>
+                        </div>
+                    </div>
 
                 <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
                         <h5 className={"card-header"}>Poll List Method</h5>
