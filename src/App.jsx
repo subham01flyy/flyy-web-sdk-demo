@@ -150,7 +150,7 @@ function App() {
             <div className="container top-container">
 
                 <h2>
-                    Flyy Web SDK  - 
+                    Flyy Web SDK 
                 </h2>
 
                 <div className={"mt-2"}>
@@ -397,17 +397,17 @@ function App() {
                 <div className="app d-flex flex-wrap mb-3">
 
                 <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
-                        <h5 className={"card-header"}>New Invite & Earn Method</h5>
+                        <h5 className={"card-header"}>Invite & Earn QR Method</h5>
                         <div className={"card-body"}>
-                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Invite & Earn New Screen</h6>
+                            <h6 className={"card-subtitle mb-2 text-muted"}>To Open Invite & Earn QR Screen</h6>
                             <CodeBlock
-                                text={"flyySDK.openInviteNewScreen(data)"}
+                                text={"flyySDK.openInviteQRScreen(data)"}
                                 language={language}
                                 theme={dracula} />
-                                <p className={"card-text"}>This Method is to Open Invite & Earn New Screen.</p>
+                                <p className={"card-text"}>This Method is to Open Invite & Earn QR Screen.</p>
                             <button 
                             // onClick={() => flyySDK.openPollListScreen(data)} 
-                            className={"form-control btn-primary mt-2  submit-button"} >Invite & Earn New Method</button>
+                            className={"form-control btn-primary mt-2  submit-button"} >Invite & Earn QR</button>
                         </div>
                     </div>
 
