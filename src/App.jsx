@@ -406,7 +406,7 @@ function App() {
                                 theme={dracula} />
                                 <p className={"card-text"}>This Method is to Open Invite & Earn QR Screen.</p>
                             <button 
-                            // onClick={() => flyySDK.openPollListScreen(data)} 
+                            onClick={() => flyySDK.openNewInviteScreen(data)} 
                             className={"form-control btn-primary mt-2  submit-button"} >Invite & Earn QR</button>
                         </div>
                     </div>
