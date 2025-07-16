@@ -150,7 +150,7 @@ function App() {
             <div className="container top-container">
 
                 <h2>
-                    Flyy Web SDK  - 
+                    Flyy Web SDK 
                 </h2>
 
                 <div className={"mt-2"}>
