@@ -24,6 +24,9 @@ function App() {
     const [isSelectedColour, setIsSelectedColour] = useState("#C7222A")
     const [referralInfoMsg, setReferralInfoMsg] = useState("")
     const [referralHistoryMessage, setReferralHistoryMessage] = useState("")
+    const [productKey, setProductKey] = useState("");
+    const [apiResponse, setApiResponse] = useState("");
+    const [loading, setLoading] = useState(false);
     const flyySDK = new FlyySDK();
 
     console.log("FLY SDK - ", flyySDK)
@@ -82,6 +85,7 @@ function App() {
 
         console.log("Clicked Init BUtton")
         console.log({partnerId})
+        console.log({userName})
         console.log({packageName})
         console.log({environment})
         console.log({partnerKey})
@@ -276,42 +280,6 @@ function App() {
                             />
                         </div>
 
-                        {/* <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Text Colour Primary:</label>
-                            <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
-                                style={{margin: '5px'}}
-                            />
-                        </div>
-
-                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Text Colour Secondary:</label>
-                            <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
-                                style={{margin: '5px'}}
-                            />
-                        </div> */}
-
-                        {/* <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Button Text Colour:</label>
-                            <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
-                                style={{margin: '5px'}}
-                            />
-                        </div>
-
-                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                            <label>Button Unselected Colour:</label>
-                            <input 
-                                // value={partnerId} 
-                                // onChange={(e) => setPartnerId(e.target.value)} 
-                                style={{margin: '5px'}}
-                            />
-                        </div> */}
-
                         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
                             <label>Description Colour:</label>
                             <input 
@@ -394,7 +362,40 @@ function App() {
                 </div>
 
                 <h4>Following Methods are availabe for various screens to call.</h4>
+                                    <div className="mb-8">
+                        {/* <h2 className="text-xl font-semibold mb-4">API Testing</h2> */}
+                        <div style={{gap: '10px', display: 'flex', justifyContent:'center', alignItems:'center', marginBottom: '10px', marginTop:'10px'}}>
+                            <input 
+                                value={productKey}
+                                onChange={(e) => setProductKey(e.target.value)}
+                                className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter Product Key"
+                            />
+                            <button 
+                                // onClick={getProductDetails}
+                                  onClick={() => flyySDK.getProductDetails(productKey)} 
+                                disabled={loading}
+                                className="text-white px-4 py-2 rounded font-medium"
+                                style={{backgroundColor: '#16a349'}}
+                            >
+                                Get Product Details
+                            </button>
+                            <button 
+                                // onClick={verifyProductDetails}
+                                 onClick={() => flyySDK.verifyProductCode(productKey)} 
+                                disabled={loading}
+                                className="text-white px-4 py-2 rounded font-medium"
+                                style={{backgroundColor: '#ea580b'}}
+                            >
+                                Verify Product Details
+                            </button>
+                        </div>
+                    </div>
+
+              
                 <div className="app d-flex flex-wrap mb-3">
+
+                    
 
                 <div className={"card m-2"} style={{ width: 20 + 'rem' }}>
                         <h5 className={"card-header"}>Invite & Earn QR Method</h5>
