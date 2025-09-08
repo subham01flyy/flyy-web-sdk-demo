@@ -408,7 +408,7 @@ function App() {
 
                             <button 
                                 // onClick={verifyProductDetails}
-                                 onClick={() => flyySDK.verifyProductCode(productKey,passReferrer,passDeviceID)} 
+                                 onClick={() => flyySDK.verifyProductCode(passReferrer,passDeviceID)} 
                                 disabled={loading}
                                 className="text-white px-4 py-2 rounded font-medium"
                                 style={{backgroundColor: '#ea580b'}}
