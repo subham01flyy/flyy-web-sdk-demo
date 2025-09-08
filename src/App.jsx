@@ -27,6 +27,10 @@ function App() {
     const [productKey, setProductKey] = useState("");
     const [apiResponse, setApiResponse] = useState("");
     const [loading, setLoading] = useState(false);
+    const [passReferrer, setPassReferrer] = useState("")
+    const [passDeviceID, setPassDeviceID] = useState("")
+
+
     const flyySDK = new FlyySDK();
 
     console.log("FLY SDK - ", flyySDK)
@@ -53,6 +57,9 @@ function App() {
         isSelectedColour: isSelectedColour,
         referralInfoMsg: referralInfoMsg,
         referralHistoryMessage: referralHistoryMessage,
+        userName: userName,
+        passReferrer: passReferrer,
+        passDeviceID: passDeviceID
     };
     
 
@@ -101,6 +108,10 @@ function App() {
         console.log({isSelectedColour})
         console.log({referralInfoMsg})
         console.log({referralHistoryMessage})
+        console.log({passDeviceID})
+        console.log({passReferrer})
+
+        console.log("FLYY - SDK : ", flyySDK)
         if (!partnerId) {
             alert("Please enter Partner ID");
             return;
@@ -380,9 +391,24 @@ function App() {
                             >
                                 Get Product Details
                             </button>
+                        </div>
+                          <div style={{gap: '10px', display: 'flex', justifyContent:'center', alignItems:'center', marginBottom: '10px', marginTop:'10px'}}>
+                            <input 
+                                value={passReferrer}
+                                onChange={(e) => setPassReferrer(e.target.value)}
+                                className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter Referrer Key"
+                            />
+                             <input 
+                                value={passDeviceID}
+                                onChange={(e) => setPassDeviceID(e.target.value)}
+                                className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter Device ID"
+                            />
+
                             <button 
                                 // onClick={verifyProductDetails}
-                                 onClick={() => flyySDK.verifyProductCode(productKey)} 
+                                 onClick={() => flyySDK.verifyProductCode(productKey,passReferrer,passDeviceID)} 
                                 disabled={loading}
                                 className="text-white px-4 py-2 rounded font-medium"
                                 style={{backgroundColor: '#ea580b'}}
