@@ -4,6 +4,8 @@ import FlyySDK from "flyy-web-sdk";
 import { CodeBlock, dracula } from "react-code-blocks";
 
 
+const flyySDK = new FlyySDK();
+
 function App() {
     const [partnerId, setPartnerId] = useState("");
     const [packageName, setPackageName] = useState("");
@@ -29,11 +31,6 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [passReferrer, setPassReferrer] = useState("")
     const [passDeviceID, setPassDeviceID] = useState("")
-
-
-    const flyySDK = new FlyySDK();
-
-    console.log("FLY SDK - ", flyySDK)
 
     flyySDK.startReferralTracking();
 
@@ -91,25 +88,6 @@ function App() {
     const startFlyy = async () => {
 
         console.log("Clicked Init BUtton")
-        console.log({partnerId})
-        console.log({userName})
-        console.log({packageName})
-        console.log({environment})
-        console.log({partnerKey})
-        console.log({isCustomQuizPageEnabled})
-        console.log({isCustomLogoEnabled})
-        console.log({isTitle})
-        console.log({isDescription})
-        console.log({isDescriptionColour})
-        console.log({isTitleColour})
-        console.log({isButtonTextColour})
-        console.log({isButtonColour})
-        console.log({isSeekbarColour})
-        console.log({isSelectedColour})
-        console.log({referralInfoMsg})
-        console.log({referralHistoryMessage})
-        console.log({passDeviceID})
-        console.log({passReferrer})
 
         console.log("FLYY - SDK : ", flyySDK)
         if (!partnerId) {
