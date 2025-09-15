@@ -86,55 +86,77 @@ function App() {
     const language = "js";
 
     const startFlyy = async () => {
-
-        console.log("Clicked Init BUtton")
-
-        console.log("FLYY - SDK : ", flyySDK)
-        if (!partnerId) {
-            alert("Please enter Partner ID");
-            return;
-        }
-        if (environment === "STAGING" && !partnerKey) {
-            alert("Please enter Partner Key");
-            return;
-        }
-        if (environment === "PRODUCTION" && (!token || !deviceId)) {
-            alert("Please enter Token and Device ID for PRODUCTION environment");
-            return;
-        }
-
-        try {
-            if (environment === "PRODUCTION") {
-                data.ext_user_token = token;
-                data.device_id = deviceId;
-            } else {
-                const baseUrl = "https://stage-partner-api.theflyy.com/v1";
-                const response = await fetch(`${baseUrl}/${partnerId}/user/${userName}/user_token`, {
-                    method: "POST",
-                    headers: {
-                        "partner-key": partnerKey,
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify({is_new: "false", username: userName})
-                });
-                
-                const res = await response.json();
-                console.log(res);
-                data.ext_user_token = res.token;
-                data.device_id = res.device_id;
-            }
-
-            flyySDK.setActionButtonPosition('left');
-            flyySDK.setActionButtonColor('#faa232');
-            flyySDK.setActionButtonText('Reward Points');
-            flyySDK.init(JSON.stringify(data));
-            flyySDK.setUserName(userName);
-            flyySDK.setUserBankCredntials({acc_type: "upi", upi_id: "vinuyer@ybl"});
-        } catch (error) {
-            console.error("Error initializing Flyy:", error);
-            alert("Failed to initialize Flyy. Please check your configuration and try again.");
-        }
+        console.log({data})
+    if (!partnerId) {
+        alert("Please enter Partner ID");
+        return;
     }
+    if (environment === "STAGING" && !partnerKey) {
+        alert("Please enter Partner Key");
+        return;
+    }
+    if (environment === "PRODUCTION" && (!token || !deviceId)) {
+        alert("Please enter Token and Device ID for PRODUCTION environment");
+        return;
+    }
+
+    try {
+        // Prepare token & device_id
+        if (environment === "PRODUCTION") {
+            data.ext_user_token = token;
+            data.device_id = deviceId;
+        } else {
+            const baseUrl = "https://stage-partner-api.theflyy.com/v1";
+            const response = await fetch(`${baseUrl}/${partnerId}/user/${userName}/user_token`, {
+                method: "POST",
+                headers: {
+                    "partner-key": partnerKey,
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({ is_new: "false", username: userName })
+            });
+
+            const res = await response.json();
+            data.ext_user_token = res.token;
+            data.device_id = res.device_id;
+        }
+
+        // Set SDK configurations
+        flyySDK.setActionButtonPosition('left');
+        flyySDK.setActionButtonColor('#faa232');
+        flyySDK.setActionButtonText('Reward Points');
+
+        // Set theme colors
+        flyySDK.setFlyyThemeColor({
+            topBgColor: "#2B49A5",
+            mainBgColor: "#CECECE",
+            shadowBgColor: "#FFFFFF",
+            offersCardBgColor: "#FFFFFF",
+            buttonBGColor: "#2B49A5",
+            headingTextColor: "#FFFFFF",
+            subHeadingTextColor: "#000000",
+            extraTextColor: "#585957",
+            labelsTextColor: "#000000",
+            walletCardColor: "#F5F8FA",
+            walletInnerCardColor: "#FFFFFF",
+            walletSubHeadingColor: "#000000",
+            scratchCardBgColor: "#4A6DE1",
+            scratchCardInnerColor: "#163BE4"
+        });
+
+        // Set user info
+        flyySDK.setUserName(userName);
+        flyySDK.setUserBankCredntials({ acc_type: "upi", upi_id: "vinuyer@ybl" });
+
+        // Initialize SDK
+        flyySDK.init(JSON.stringify(data));
+
+    } catch (error) {
+        console.error("Error initializing Flyy:", error);
+        alert("Failed to initialize Flyy. Please check your configuration and try again.");
+    }
+};
+
 
     return (
         <div className="parent-container">
