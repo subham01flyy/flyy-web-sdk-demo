@@ -129,19 +129,19 @@ function App() {
         // Set theme colors
         flyySDK.setFlyyThemeColor({
             topBgColor: "#2B49A5",
-            mainBgColor: "#CECECE",
-            shadowBgColor: "#FFFFFF",
-            offersCardBgColor: "#FFFFFF",
-            buttonBGColor: "#2B49A5",
-            headingTextColor: "#FFFFFF",
+            mainBgColor: "#f20707",
+            shadowBgColor: "#e7f207",
+            offersCardBgColor: "#470a0a",
+            buttonBGColor: "#07f22e",
+            headingTextColor: "#ed6028",
             subHeadingTextColor: "#000000",
             extraTextColor: "#585957",
             labelsTextColor: "#000000",
-            walletCardColor: "#F5F8FA",
-            walletInnerCardColor: "#FFFFFF",
+            walletCardColor: "#d028ed",
+            walletInnerCardColor: "#28d9ed",
             walletSubHeadingColor: "#000000",
-            scratchCardBgColor: "#4A6DE1",
-            scratchCardInnerColor: "#163BE4"
+            scratchCardBgColor: "#f55302",
+            scratchCardInnerColor: "#f52b02"
         });
 
         // Set user info
