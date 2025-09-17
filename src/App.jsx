@@ -129,10 +129,10 @@ function App() {
         // Set theme colors
         flyySDK.setFlyyThemeColor({
             topBgColor: "#2B49A5",
-            mainBgColor: "#f20707",
-            shadowBgColor: "#e7f207",
+            mainBgColor: "#0b1254",
+            shadowBgColor: "#1d2678",
             offersCardBgColor: "#470a0a",
-            buttonBGColor: "#07f22e",
+            buttonBGColor: "#2B49A5",
             headingTextColor: "#ed6028",
             subHeadingTextColor: "#000000",
             extraTextColor: "#585957",
