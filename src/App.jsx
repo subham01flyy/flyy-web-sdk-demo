@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import FlyySDK from "flyy-web-sdk";
+import FlyySDK from "flyy-web-sdk-staging";
 import { CodeBlock, dracula } from "react-code-blocks";
 
 
