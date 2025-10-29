@@ -32,6 +32,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [passReferrer, setPassReferrer] = useState("");
   const [passDeviceID, setPassDeviceID] = useState("");
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   flyySDK.startReferralTracking();
 
@@ -58,6 +59,7 @@ function App() {
     userName: userName,
     passReferrer: passReferrer,
     passDeviceID: passDeviceID,
+    isDarkTheme: isDarkTheme,
   };
 
   const code = `const flyySDK = new FlyySDK();
@@ -245,6 +247,17 @@ function App() {
                 <option value="NO">No</option>
               </select>
             </div>
+            {/* <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <label>Dark Theme Enable</label>
+              <select
+                value={isCustomLogoEnabled}
+                onChange={(e) => setIsDarkTheme(e.target.value)}
+                style={{ margin: "5px" }}
+              >
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+              </select>
+            </div> */}
 
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <label>Thank You Title:</label>
@@ -371,6 +384,17 @@ function App() {
                 </div>
               </>
             )}
+
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <label>Dark Theme Enable</label>
+              <input
+                type="checkbox"
+                checked={isDarkTheme}
+                onChange={(e) =>
+                  setIsDarkTheme(e.target.checked ? true : false)
+                }
+              />
+            </div>
           </div>
 
           <h4>Enter user id to generate token in Flyy and Initilize Flyy</h4>
