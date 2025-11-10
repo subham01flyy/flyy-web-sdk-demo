@@ -15,6 +15,7 @@ function App() {
   const [deviceId, setDeviceId] = useState("");
   const [isCustomQuizPageEnabled, setIsCustomQuizPageEnabled] = useState("YES");
   const [isCustomLogoEnabled, setIsCustomLogoEnabled] = useState("YES");
+  const [logoUrl, setLogoUrl] = useState("");
   const [isTitle, setIsTitle] = useState("Thank You");
   const [isDescription, setIsDescription] = useState(
     "You are wise in your financial decisions."
@@ -60,6 +61,7 @@ function App() {
     passReferrer: passReferrer,
     passDeviceID: passDeviceID,
     isDarkTheme: isDarkTheme,
+    logoUrl: logoUrl,
   };
 
   const code = `const flyySDK = new FlyySDK();
@@ -236,7 +238,7 @@ function App() {
                 <option value="NO">No</option>
               </select>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            {/* <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <label>Show Custom Logo :</label>
               <select
                 value={isCustomLogoEnabled}
@@ -246,6 +248,15 @@ function App() {
                 <option value="YES">Yes</option>
                 <option value="NO">No</option>
               </select>
+            </div> */}
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <label>Add Logo URL:</label>
+              <input
+                value={logoUrl}
+                onChange={(e) => setLogoUrl(e.target.value)}
+                style={{ margin: "5px" }}
+                // placeholder="Please Enter Image URL."
+              />
             </div>
             {/* <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <label>Dark Theme Enable</label>
