@@ -487,6 +487,25 @@ function App() {
               placeholder="Enter Device ID"
             />
 
+            {/* <button
+              // onClick={verifyProductDetails}
+              onClick={() =>
+                flyySDK.verifyProductCode(passReferrer, passDeviceID)
+              }
+              disabled={loading}
+              className="text-white px-4 py-2 rounded font-medium"
+              style={{ backgroundColor: "#ea580b" }}
+            >
+              Verify Product Details
+            </button> */}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <button
               // onClick={verifyProductDetails}
               onClick={() =>
